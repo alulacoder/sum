@@ -1,0 +1,24 @@
+# Open the external file and read the numbers
+with open('external.txt', 'r') as file:
+    # Read all lines from the file
+    numbers = file.readlines()
+
+# Debugging: Print the raw lines from the file to check what is being read
+print("Raw lines from the file:", numbers)
+
+# Convert the lines into integers and sum them up
+total_sum = 0
+for number in numbers:
+    stripped_number = number.strip()  # Remove extra spaces or newlines
+    if stripped_number:  # Check if the line is not empty
+        try:
+            # Try converting to integer and add to the sum
+            integer_value = int(stripped_number)
+            print(f"Adding {integer_value} to the sum.")  # Debugging: Print each number added
+            total_sum += integer_value
+        except ValueError:
+            # If there's an error in conversion, print a warning
+            print(f"Warning: Could not convert '{stripped_number}' to an integer.")
+
+# Print the final sum
+print("The sum of the numbers is:", total_sum)
